@@ -300,6 +300,20 @@ def enregistrer_cnvs(out_file,cnvs,sampleId) :
                       str(cnvs["KolmogorovSmirnovPvalue"][i])+","+
                       str(cnvs["genes_list"][i])+"\n")
     fichier.close()
+
+#############################################################
+## Fonction pour enregister le Dataframe pandas des segments IGV
+def enregistrer_freecs(out_file,freecs,sampleId) :
+    fichier = open(out_file, "a")
+    for i in range(0,len(freecs["Chromosome"])) :
+        fichier.write(str(sampleId)+"\t"+
+                      str(freecs["Chromosome"][i])+"\t"+
+                      str(freecs["Start"][i])+"\t"+
+                      str(freecs["End"][i])+"\t"+
+                      str(freecs["Num_Probes"][i])+"\t"+
+                      str(freecs["Segment_Mean"][i])+"\n")
+    fichier.close()
+
 #############################################################
 ## Fonction pour enregister les statistiques
 def enregistrer_stats(outStats_file,stats,header) :
